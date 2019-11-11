@@ -26,7 +26,7 @@ class Yogiyo:
             search='',
             zip_code=zip_code,
             cate=cate,
-        )
+        ) #cate = category 치킨, 피자 등 음식 카테고리 지정
         res = requests.get(url, params=params, headers=self.headers)
         return res.json()
     
@@ -40,19 +40,20 @@ headers = {
     'X-ApiKey': 'iphoneap',
     'X-ApiSecret': 'fe5183cc3dea12bd0ce299cf110a75a2',
     'X-MOD-SBB-CTYPE': 'xhr'
-}
+} #url에 붙여서 전송할 header
 
-yogiyo = Yogiyo(headers)
+yogiyo = Yogiyo(headers) #yogiyo 객체 함수로 url get
+zip_code = '156070' # 서울특별시 동작구 흑석동 221 중앙대학교 의 요기요 내부 zipcode
 
-zip_code = '156070'
-restaurants = yogiyo.get_restaurant_list_by_geo('156070','치킨')['restaurants']
+restaurants = yogiyo.get_restaurant_list_by_geo('156070','치킨')['restaurants'] # 156070위치의 치킨 카테고리에 있는 음식점 크롤링
 
-df = pd.DataFrame.from_records(restaurants)
-df.to_excel('YMC.xlsx')
-res_id = df[['id']]
-print(len(res_id))
+df = pd.DataFrame.from_records(restaurants) # 음식점 목록의 pandas dataframe 화
+df.to_excel('YMC.xlsx') # 음식점 목록 xlsx파일로 저장
 
+res_id = df[['id']] # 음식점 목록 df에서 음식점의 id 열 추출
+print(len(res_id)) # 음식점 목록의 개수 출력 (중앙대 기준 치킨카테고리 음식점 96개)
 
+# 총 음식점 개수만큼 각 음식점의 메뉴 추츨 후 json파일로 저장. 음식점 id로 각 음식점 
 for i in range(len(res_id)):
     id = res_id['id'][i].astype(np.string_).decode('UTF-8')
     url = 'https://www.yogiyo.co.kr/api/v1/restaurants/'+id+'/menu/?add_photo_menu=android'
