@@ -6,3 +6,7 @@ YRC.py
   
 YMC.py
   - 요기요API를 이용한 음식점 메뉴 크롤링 (미완)
+  
+requiremnet.txt
+  $ pip install -r requirements.txt
+  install pip modules
