@@ -10,4 +10,4 @@ YMC.py
 requiremnet.txt
 
   - $ pip install -r requirements.txt
-  - install pip modules
+  (코드에 사용된 모듈 install)
