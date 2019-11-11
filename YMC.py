@@ -62,3 +62,4 @@ for i in range(len(res_id)):
     menu_list = res.json()
     with open('menu_list.json', 'at', encoding='utf8') as f:
         f.write(json.dumps(menu_list, ensure_ascii=False))
+        
