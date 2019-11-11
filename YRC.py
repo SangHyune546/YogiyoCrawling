@@ -211,7 +211,6 @@ start_yogiyo_crawling('동작구','치킨')
 df = pickle.load(open('./data/동작구 서울특별시 동작구 흑석동 221 중앙대학교_치킨_df.pkl','rb'))
 df.tail()
 
-
 # Chrome webdriver 종료
 driver.close() 
 driver.quit() 
