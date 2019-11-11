@@ -62,22 +62,3 @@ for i in range(len(res_id)):
     menu_list = res.json()
     with open('menu_list.json', 'at', encoding='utf8') as f:
         f.write(json.dumps(menu_list, ensure_ascii=False))
-
-
-'''
-url = 'https://www.yogiyo.co.kr/api/v1/restaurants/292688/menu/?add_photo_menu=android'
-res = requests.get(url, headers=headers)
-menu_list = res.json()
-
-with open('menu_list.xlsx', 'wt', encoding='utf8') as f:
-    f.write(json.dumps(menu_list, ensure_ascii=False))
-
-df = pd.DataFrame.from_records(menu_list)
-df.to_excel('YMC2_menu.xlsx')
-url = 'https://www.yogiyo.co.kr/api/v1/restaurants/292688/menu/?add_photo_menu=android'
-res = requests.get(url, headers=headers)
-menu_list = res.json()
-
-with open('menu_list.json', 'wt', encoding='utf8') as f:
-    f.write(json.dumps(menu_list, ensure_ascii=False))
-'''
