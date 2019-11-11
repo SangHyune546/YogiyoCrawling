@@ -16,7 +16,8 @@ class Yogiyo:
     
     def __init__(self, headers):
         self.headers = headers
-        
+    
+    #요기요 내부 zip 코드로 해당 위치의 음식점 리스트 불러오기
     def get_restaurant_list_by_geo(self, zip_code,cate):
         url = self.HOST + '/api/v1/restaurants-geo/'
         params = dict(
@@ -51,9 +52,9 @@ df = pd.DataFrame.from_records(restaurants) # 음식점 목록의 pandas datafra
 df.to_excel('YMC.xlsx') # 음식점 목록 xlsx파일로 저장
 
 res_id = df[['id']] # 음식점 목록 df에서 음식점의 id 열 추출
-print(len(res_id)) # 음식점 목록의 개수 출력 (중앙대 기준 치킨카테고리 음식점 96개)
+print(len(res_id)) # 음식점 목록의 개수 출력 (중앙대 기준 치킨카테고리의 음식점 : 96개)
 
-# 총 음식점 개수만큼 각 음식점의 메뉴 추츨 후 json파일로 저장. 음식점 id로 각 음식점 
+# 총 음식점 개수만큼 각 음식점의 메뉴 추츨 후 json파일로 저장. 음식점 id로 각 음식점 식별
 for i in range(len(res_id)):
     id = res_id['id'][i].astype(np.string_).decode('UTF-8')
     url = 'https://www.yogiyo.co.kr/api/v1/restaurants/'+id+'/menu/?add_photo_menu=android'
