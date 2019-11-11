@@ -9,5 +9,5 @@ YMC.py
   
 requiremnet.txt
 
-  $ pip install -r requirements.txt
-  install pip modules
+  - $ pip install -r requirements.txt
+  - install pip modules
